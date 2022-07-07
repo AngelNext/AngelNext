@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Project from '../components/Project.astro';
+import spybot from '../assets/spybot.webp';
+import loxt from '../assets/loxt.webp';
+import tasks from '../assets/tasks.webp';
+import sendIcon from '../assets/send.svg';
+
+const date = new Date().getFullYear();
+---
+
+<Layout>
+	<header class="grid place-items-center md:mb-0 mb-8 p-20">
+		<div class="sm:flex items-center">
+			<img src="/favicon.png" alt="AngelNext Icon." width="200" height="200" />
+			<h1 data-text="Hi, I am AngelNext"
+				class="text-black font-semibold font-splash tracking-widest text-base sm:text-2xl md:text-5xl p-2">
+				Hi, I am AngelNext
+			</h1>
+		</div>
+		<p class="uppercase font-extralight tracking-widest text-gray-400 mt-5 text-xs lg:text-lg">
+			I am a FullStack Developer that loves spending his free time coding & learning new things.
+		</p>
+		<div class="mt-10" id="skills"></div>
+	</header>
+
+	<div>
+		<div class="grid place-items-center">
+			<h2 class="text-center text-6xl rounded-lg font-splash border-b-2 m-4">My Projects</h2>
+		</div>
+		<div class="justify-center flex flex-col mb-10 p-5">
+			<Project title="Spy Bot" icon={spybot} date="Feb 2022" color="bg-black"
+				url="https://github.com/spybot-discord/spybot">
+				Spy Bot is a Discord security, moderation bot that cares about you and your community.
+			</Project>
+			<Project title="Loxt" icon={loxt} date="May 2022" color="bg-blue-600" url="https://github.com/AngelNext/loxt">
+				Loxt is a simple and easy console logger of 2kb in size with 0 external dependencies.
+			</Project>
+			<Project title="Tasks API" icon={tasks} date="Mar 2022" color="bg-indigo-600"
+				url="https://github.com/AngelNext/tasks-api">
+				A simple API made in Go conected to MySQL.
+			</Project>
+		</div>
+	</div>
+
+	<div class="grid place-items-center mb-10">
+		<h2 class="text-6xl border-b-2 rounded-lg font-splash m-4">Contact Me</h2>
+		<form data-netlify="true" class="w-5/6 shadow-2xl bg-blue-700 rounded-3xl px-8 pt-6 pb-8">
+			<input
+				class="font-medium bg-gray-900 mb-4 shadow-2xl appearance-none rounded-3xl w-full p-4 text-white leading-tight focus:outline-none focus:shadow-outline"
+				placeholder="From" />
+			<textarea
+				class="bg-gray-900 mb-4 shadow-2xl appearance-none rounded-3xl w-full p-4 text-white leading-tight focus:outline-none focus:shadow-outline"
+				placeholder="Message"></textarea>
+			<button
+				class="flex items-center justify-between bg-gray-900 text-white font-bold px-4 py-3 rounded-3xl focus:outline-none focus:shadow-outline"
+				type="submit">
+				<p class="pr-2">Send</p>
+				<img src={sendIcon} alt="Send icon" width="20" height="20" />
+			</button>
+		</form>
+	</div>
+
+	<footer class="text-center mb-8">
+		<p class="text-gray-400 text-sm">
+			&copy; {date} AngelNext. All rights reserved.
+		</p>
+	</footer>
+</Layout>
+
+<style>
+	@media (min-width: 768px) {
+		#skills {
+			width: 723px;
+			height: 104px;
+			display: list-item;
+			list-style-position: inside;
+			list-style-image: url("https://skillicons.dev/icons?i=js,html,css,wasm,ts,git,cs,discord,deno,kotlin,rust,sass,styledcomponents,go,vite,nodejs,netlify,mysql,nestjs,mongodb,prisma,tailwind,dart,react&perline=12");
+		}
+	}
+
+	@media (max-width: 768px) {
+		#skills {
+			width: 442px;
+			height: 161px;
+			display: list-item;
+			list-style-position: inside;
+			list-style-image: url("https://skillicons.dev/icons?i=js,html,css,wasm,ts,git,cs,discord,deno,kotlin,rust,sass,styledcomponents,go,vite,nodejs,netlify,mysql,nestjs,mongodb,prisma,tailwind,dart,react&perline=8");
+		}
+	}
+
+	@media (max-width: 600px) {
+		#skills {
+			width: 292px;
+			height: 192px;
+			display: list-item;
+			list-style-position: inside;
+			list-style-image: url("https://skillicons.dev/icons?i=js,html,css,wasm,ts,git,cs,discord,deno,kotlin,rust,sass,styledcomponents,go,vite,nodejs,netlify,mysql,nestjs,mongodb,prisma,tailwind,dart,react&perline=6");
+		}
+	}
+
+	@media (max-width: 460px) {
+		#skills {
+			width: 217px;
+			height: 329px;
+			display: list-item;
+			list-style-position: inside;
+			list-style-image: url("https://skillicons.dev/icons?i=js,html,css,wasm,ts,git,cs,discord,deno,kotlin,rust,sass,styledcomponents,go,vite,nodejs,netlify,mysql,nestjs,mongodb,prisma,tailwind,dart,react&perline=4");
+		}
+	}
+
+	h1 {
+		perspective: 1000px;
+		position: relative;
+		color: rgba(#000, 0.2);
+	}
+
+	h1::after {
+		color: #004AAD;
+		position: absolute;
+		top: 0;
+		left: 0;
+		content: 'Hi, I am AngelNext';
+		opacity: 1;
+		transform: rotateY(-50deg);
+		animation: loading06 8s forwards;
+	}
+
+	@keyframes loading06 {
+
+		25%,
+		100% {
+			transform: rotateY(0deg);
+			opacity: 1;
+		}
+	}
+</style>
