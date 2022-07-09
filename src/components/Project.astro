@@ -10,24 +10,25 @@ interface Props {
 const { title, icon, date, color, url } = Astro.props;
 ---
 
-<a href={url} target="_blank" class={`flex-1 bg-opacity-60 p-3 my-2 rounded-md transform ease-in-out duration-300
-	${color}`}>
-	<div class="flex flex-row items-center">
-		<img src={icon} alt={`${icon} icon`} class="w-20 rounded-md h-20 object-contain" />
-		<div class="ml-4 flex flex-col justify-center">
-			<h2 class="text-lg font-bold flex items-center">
-				{title}
-				<span class="text-sm font-normal ml-4 hidden sm:block">[{date}]</span>
-			</h2>
-			<p class="text-sm">
-				<slot />
-			</p>
+<li class={`flex-1 bg-opacity-60 p-3 my-2 rounded-md transform ease-in-out duration-300 ${color}`}>
+	<a class="p-0" href={url} target="_blank">
+		<div class="flex flex-row items-center">
+			<img src={icon} alt={`${icon} icon`} class="w-20 rounded-md h-20 object-contain" />
+			<div class="ml-4 flex flex-col justify-center">
+				<h2 class="text-lg font-bold flex items-center">
+					{title}
+					<span class="text-sm font-normal ml-4 hidden sm:block">[{date}]</span>
+				</h2>
+				<p class="text-sm">
+					<slot />
+				</p>
+			</div>
 		</div>
-	</div>
-</a>
+	</a>
+</li>
 
 <style>
-	a:hover {
+	li:hover {
 		--tw-scale-y: 1.01;
 		--tw-scale-x: 1.01;
 		transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));

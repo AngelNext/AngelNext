@@ -1,12 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Project from '../components/Project.astro';
+import ContactForm from '../components/ContactForm.svelte';
 import spybot from '../assets/spybot.webp';
 import loxt from '../assets/loxt.webp';
 import tasks from '../assets/tasks.webp';
-import sendIcon from '../assets/send.svg';
-
-const date = new Date().getFullYear();
 ---
 
 <Layout>
@@ -28,7 +26,7 @@ const date = new Date().getFullYear();
 		<div class="grid place-items-center">
 			<h2 class="text-center text-6xl rounded-lg font-splash border-b-2 m-4">My Projects</h2>
 		</div>
-		<div class="justify-center flex flex-col mb-10 p-5">
+		<ul class="justify-center flex flex-col mb-10 p-5">
 			<Project title="Spy Bot" icon={spybot} date="Feb 2022" color="bg-black"
 				url="https://github.com/spybot-discord/spybot">
 				Spy Bot is a Discord security, moderation bot that cares about you and your community.
@@ -40,32 +38,13 @@ const date = new Date().getFullYear();
 				url="https://github.com/AngelNext/tasks-api">
 				A simple API made in Go conected to MySQL.
 			</Project>
-		</div>
+		</ul>
 	</div>
 
 	<div class="grid place-items-center mb-10">
 		<h2 class="text-6xl border-b-2 rounded-lg font-splash m-4">Contact Me</h2>
-		<form data-netlify="true" class="w-5/6 shadow-2xl bg-blue-700 rounded-3xl px-8 pt-6 pb-8">
-			<input
-				class="font-medium bg-gray-900 mb-4 shadow-2xl appearance-none rounded-3xl w-full p-4 text-white leading-tight focus:outline-none focus:shadow-outline"
-				placeholder="From" />
-			<textarea
-				class="bg-gray-900 mb-4 shadow-2xl appearance-none rounded-3xl w-full p-4 text-white leading-tight focus:outline-none focus:shadow-outline"
-				placeholder="Message"></textarea>
-			<button
-				class="flex items-center justify-between bg-gray-900 text-white font-bold px-4 py-3 rounded-3xl focus:outline-none focus:shadow-outline"
-				type="submit">
-				<p class="pr-2">Send</p>
-				<img src={sendIcon} alt="Send icon" width="20" height="20" />
-			</button>
-		</form>
+		<ContactForm client:load />
 	</div>
-
-	<footer class="text-center mb-8">
-		<p class="text-gray-400 text-sm">
-			&copy; {date} AngelNext. All rights reserved.
-		</p>
-	</footer>
 </Layout>
 
 <style>

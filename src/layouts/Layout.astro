@@ -1,5 +1,6 @@
 ---
 import '../assets/global.css';
+import Footer from '../components/Footer.svelte';
 ---
 
 <!DOCTYPE html>
@@ -11,10 +12,12 @@ import '../assets/global.css';
 		<meta name="viewport" content="width=device-width">
 		<link rel="icon" type="image/x-icon" href="/favicon.png" />
 		<link rel="manifest" href="/manifest.webmanifest">
+		<script src="../index.ts"></script>
 	</head>
 
 	<body class="bg-gray-900 text-white">
 		<slot />
+		<Footer client:load />
 	</body>
 
 </html>

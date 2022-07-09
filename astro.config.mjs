@@ -1,21 +1,22 @@
 import { defineConfig } from 'astro/config';
-import { VitePWA } from 'vite-plugin-pwa';
+import svelte from '@astrojs/svelte';
 import tailwind from '@astrojs/tailwind';
+import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
-	integrations: [tailwind()],
+	integrations: [
+		tailwind({
+			config: {
+				applyBaseStyles: false,
+			},
+		}),
+		svelte(),
+	],
 	vite: {
 		plugins: [
 			VitePWA({
-				includeAssets: [
-					'favicon.png',
-					'robots.txt',
-					'manifest.webmanifest',
-					'assets/icons/*.png',
-					'assets/icons/*.svg',
-					'assets/fonts/Splash-Regular.ttf',
-				],
-				registerType: 'autoUpdate',
+				strategies: 'injectManifest',
+				filename: 'sw.ts',
 				manifest: {
 					short_name: 'AngelNext',
 					name: 'AngelNext',
@@ -33,6 +34,8 @@ export default defineConfig({
 					theme_color: '#111827',
 					description: 'Portfolio website for AngelNext',
 				},
+				srcDir: 'src',
+				registerType: 'autoUpdate',
 			}),
 		],
 	},
