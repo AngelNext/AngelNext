@@ -4,14 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
-	integrations: [
-		tailwind({
-			config: {
-				applyBaseStyles: false,
-			},
-		}),
-		svelte(),
-	],
+	integrations: [tailwind(), svelte()],
 	vite: {
 		plugins: [
 			VitePWA({

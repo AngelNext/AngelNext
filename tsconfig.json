@@ -8,6 +8,6 @@
 		"lib": ["ES2022", "DOM", "WebWorker"],
 		"types": ["vite/client"]
 	},
-	"include": ["src/**/*.ts"],
+	"include": ["src/**/*.ts", "public/sw.ts"],
 	"exclude": []
 }

@@ -5,28 +5,35 @@ import ContactForm from '../components/ContactForm.svelte';
 import spybot from '../assets/spybot.webp';
 import loxt from '../assets/loxt.webp';
 import tasks from '../assets/tasks.webp';
+import github from '../assets/github.webp';
+import discord from '../assets/discord.webp';
+import gmail from '../assets/gmail.webp';
+import Separator from '../components/Separator.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import Section from '../components/Section.astro';
 ---
 
 <Layout>
-	<header class="grid place-items-center md:mb-0 mb-8 p-20">
-		<div class="sm:flex items-center">
-			<img src="/favicon.png" alt="AngelNext Icon." width="200" height="200" />
-			<h1 data-text="Hi, I am AngelNext"
-				class="text-black font-semibold font-splash tracking-widest text-base sm:text-2xl md:text-5xl p-2">
+	<header class="flex flex-col items-center mb-8 p-5">
+		<div class="gap-2 flex-col sm:flex-row flex items-center">
+			<span class="icons">
+				<img id="blur" class="icon" src="/favicon.png" alt="AngelNext Icon." width="200" height="200" />
+			</span>
+			<h1 class="neon-title font-semibold font-splash tracking-widest text-2xl sm:text-3xl md:text-5xl p-2">
 				Hi, I am AngelNext
 			</h1>
 		</div>
-		<p class="uppercase font-extralight tracking-widest text-gray-400 mt-5 text-xs lg:text-lg">
+		<p class="mx-16 font-medium tracking-wide text-gray-400 my-8 text-sm sm:text-lg">
 			I am a FullStack Developer that loves spending his free time coding & learning new things.
 		</p>
-		<div class="mt-10" id="skills"></div>
+		<div id="skills"></div>
 	</header>
 
-	<div>
-		<div class="grid place-items-center">
-			<h2 class="text-center text-6xl rounded-lg font-splash border-b-2 m-4">My Projects</h2>
-		</div>
-		<ul class="justify-center flex flex-col mb-10 p-5">
+	<Separator />
+
+	<Section>
+		<SectionTitle>My Projects</SectionTitle>
+		<ul class="w-5/6">
 			<Project title="Spy Bot" icon={spybot} date="Feb 2022" color="bg-black"
 				url="https://github.com/spybot-discord/spybot">
 				Spy Bot is a Discord security, moderation bot that cares about you and your community.
@@ -34,17 +41,30 @@ import tasks from '../assets/tasks.webp';
 			<Project title="Loxt" icon={loxt} date="May 2022" color="bg-blue-600" url="https://github.com/AngelNext/loxt">
 				Loxt is a simple and easy console logger of 2kb in size with 0 external dependencies.
 			</Project>
-			<Project title="Tasks API" icon={tasks} date="Mar 2022" color="bg-indigo-600"
+			<Project title="Tasks API" icon={tasks} date="Mar 2022" color="bg-indigo-800"
 				url="https://github.com/AngelNext/tasks-api">
 				A simple API made in Go conected to MySQL.
 			</Project>
 		</ul>
-	</div>
+	</Section>
 
-	<div class="grid place-items-center mb-10">
-		<h2 class="text-6xl border-b-2 rounded-lg font-splash m-4">Contact Me</h2>
-		<ContactForm client:load />
-	</div>
+	<Section>
+		<SectionTitle>Contact Me</SectionTitle>
+		<ContactForm />
+	</Section>
+
+	<Section>
+		<SectionTitle>Socials</SectionTitle>
+		<ul class="w-5/6">
+			<Project title="AngelNext" icon={github} date="Checked at least weekly" color="bg-black"
+				url="https://github.com/AngelNext" />
+			<Project title="@AngelNext#9162" icon={discord} date="Checked Daily" color="bg-indigo-800"
+				url="https://discord.com/users/807705107852558386" />
+			<Project title="contact@angelnext.dev" icon={gmail} date="Checked at least weekly" color="bg-red-400"
+				url="mailto:contact@angelnext.dev" />
+		</ul>
+	</Section>
+
 </Layout>
 
 <style>
@@ -88,29 +108,12 @@ import tasks from '../assets/tasks.webp';
 		}
 	}
 
-	h1 {
-		perspective: 1000px;
-		position: relative;
-		color: rgba(#000, 0.2);
+	:global(.neon-title) {
+		color: #4f9aff;
+		text-shadow: 0 2px 10px #4f9aff;
 	}
 
-	h1::after {
-		color: #004AAD;
-		position: absolute;
-		top: 0;
-		left: 0;
-		content: 'Hi, I am AngelNext';
-		opacity: 1;
-		transform: rotateY(-50deg);
-		animation: loading06 8s forwards;
-	}
-
-	@keyframes loading06 {
-
-		25%,
-		100% {
-			transform: rotateY(0deg);
-			opacity: 1;
-		}
+	#blur {
+		filter: blur(2px);
 	}
 </style>
